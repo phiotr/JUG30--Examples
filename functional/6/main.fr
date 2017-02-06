@@ -1,0 +1,24 @@
+import System.Environment (getArgs, getProgName)
+import ModuleAutomata
+import ModuleResize
+
+
+main :: IO ()
+main = do
+    progName <- getProgName                         -- getProgName :: IO String
+    progArgs <- getArgs                             -- getArgs :: IO [String]
+
+    if (length progArgs) < 4 then
+        putStrLn ("Usage: " ++  progName ++ " <width> <height> <rule> <zoom>")
+    else let
+        width   = atoi $ progArgs !! 0
+        height  = atoi $ progArgs !! 1
+        rule    = atoi $ progArgs !! 2
+        zoom    = atoi $ progArgs !! 3
+
+        ca_width = width `div` zoom
+        ca_height = height `div` zoom
+
+        output  = "fractals/fr-" ++ show rule ++ "-" ++ show zoom ++ "-" ++ show width ++ "x" ++ show height ++ ".txt"
+      in
+        writeFile output . toPrettyString . resizeXY zoom $ generateCellularAutomata ca_width ca_height rule

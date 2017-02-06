@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Implementation-Title: Cellular Automata - demonstrative application
+Implementation-Vendor: Piotr Skonieczka & Frege
+Main-Class: Main
+Class-Path: ./lib/fregec7.jar

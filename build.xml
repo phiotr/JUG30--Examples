@@ -1,0 +1,42 @@
+<project name="CellularAutomata" basedir=".">
+
+    <property name="src.dir" value="oop/j8"/>
+    <property name="native.dir" value="oop/native"/>
+    <property name="dst.dir" value="bin"/>
+    <property name="lib.dir" value="lib"/>
+    <property name="manifest" value="MANIFEST.MF"/>
+    <property name="native.manifest" value="MANIFEST-n.MF"/>
+
+    <target name="all" depends="app0, app1, app2, app3, app4, app6, app7, native"/>
+
+    <target name="app0">
+        <jar destfile="${dst.dir}/app0.jar" basedir="${src.dir}/0/" includes="**/*.class" manifest="${manifest}"/>
+    </target>
+    <target name="app1">
+        <jar destfile="${dst.dir}/app1.jar" basedir="${src.dir}/1/" includes="**/*.class" manifest="${manifest}"/>
+    </target>
+    <target name="app2">
+        <jar destfile="${dst.dir}/app2.jar" basedir="${src.dir}/2/" includes="**/*.class" manifest="${manifest}"/>
+    </target>
+    <target name="app3">
+        <jar destfile="${dst.dir}/app3.jar" basedir="${src.dir}/3/" includes="**/*.class" manifest="${manifest}"/>
+    </target>
+    <target name="app4">
+        <jar destfile="${dst.dir}/app4.jar" basedir="${src.dir}/4/" includes="**/*.class" manifest="${manifest}"/>
+    </target>
+    <target name="app5">
+        <jar destfile="${dst.dir}/app5.jar" basedir="${src.dir}/5/" includes="**/*.class" manifest="${manifest}"/>
+    </target>
+    <target name="app6">
+        <jar destfile="${dst.dir}/app6.jar" basedir="${src.dir}/6/" includes="**/*.class" manifest="${manifest}"/>
+    </target>
+    <target name="app7">
+        <jar destfile="${dst.dir}/app7.jar" basedir="${src.dir}/7/" includes="**/*.class" manifest="${manifest}"/>
+    </target>
+
+    <target name="native">
+        <javac srcdir="${native.dir}" destdir="${native.dir}" includeantruntime="false"/>
+        <jar destfile="${dst.dir}/native.jar" basedir="${native.dir}/" includes="**/*.class" manifest="${native.manifest}"/>
+    </target>
+
+</project>

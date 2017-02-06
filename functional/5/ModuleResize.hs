@@ -1,0 +1,37 @@
+module ModuleResize where
+
+-- Haskell's replicate function is implemented as follow:
+-- replicate n x = take n $ repeat x
+
+
+-- Here is a little bit faster one:
+replicate' :: Int -> a -> [a]
+replicate' n x = [x | _ <- [1..n]]
+
+
+-- And the one which works almost-in-place for known zoom factors:
+replicate'' :: Int -> a -> [a]
+replicate'' n x = case n of
+    0 -> []
+    1 -> [x]
+    2 -> [x,x]
+    3 -> [x,x,x]
+    4 -> [x,x,x,x]
+    5 -> [x,x,x,x,x]
+    6 -> [x,x,x,x,x,x]
+    7 -> [x,x,x,x,x,x,x]
+    8 -> [x,x,x,x,x,x,x,x]
+    9 -> [x,x,x,x,x,x,x,x,x]
+    10 -> [x,x,x,x,x,x,x,x,x,x]
+    15 -> [x,x,x,x,x,x,x,x,x,x,x,x,x,x,x]
+    20 -> [x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x]
+    25 -> [x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x]
+    30 -> [x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x]
+    50 -> [x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x]
+    100 -> [x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x,x]
+    _ -> replicate' n x
+
+
+resizeXY :: Int -> [[a]] -> [[a]]
+resizeXY 1 = id
+resizeXY z = concatMap (replicate'' z) . map (concatMap $ replicate'' z)

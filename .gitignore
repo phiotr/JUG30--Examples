@@ -1,0 +1,9 @@
+.idea/
+bin/
+oop/
+lib/
+fractals/
+*.o
+*.class
+*.hi
+

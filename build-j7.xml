@@ -1,0 +1,34 @@
+<project name="CellularAutomata" basedir=".">
+
+	<property name="src.dir" value="oop/j7"/>
+	<property name="dst.dir" value="bin"/>
+	<property name="lib.dir" value="lib"/>
+	<property name="manifest" value="MANIFEST-j7.MF"/>
+
+	<target name="all" depends="app0, app1, app2, app3, app4, app6, app7"/>
+
+	<target name="app0">
+		<jar destfile="${dst.dir}/app0-j7.jar" basedir="${src.dir}/0/" includes="**/*.class" manifest="${manifest}"/>
+	</target>
+	<target name="app1">
+		<jar destfile="${dst.dir}/app1-j7.jar" basedir="${src.dir}/1/" includes="**/*.class" manifest="${manifest}"/>
+	</target>
+	<target name="app2">
+		<jar destfile="${dst.dir}/app2-j7.jar" basedir="${src.dir}/2/" includes="**/*.class" manifest="${manifest}"/>
+	</target>
+	<target name="app3">
+		<jar destfile="${dst.dir}/app3-j7.jar" basedir="${src.dir}/3/" includes="**/*.class" manifest="${manifest}"/>
+	</target>
+	<target name="app4">
+		<jar destfile="${dst.dir}/app4-j7.jar" basedir="${src.dir}/4/" includes="**/*.class" manifest="${manifest}"/>
+	</target>
+	<target name="app5">
+		<jar destfile="${dst.dir}/app5-j7.jar" basedir="${src.dir}/5/" includes="**/*.class" manifest="${manifest}"/>
+	</target>
+	<target name="app6">
+		<jar destfile="${dst.dir}/app6-j7.jar" basedir="${src.dir}/6/" includes="**/*.class" manifest="${manifest}"/>
+	</target>
+	<target name="app7">
+		<jar destfile="${dst.dir}/app7-7.jar" basedir="${src.dir}/7/" includes="**/*.class" manifest="${manifest}"/>
+	</target>
+</project>
