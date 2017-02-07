@@ -5,7 +5,6 @@ import ModulePng
 import ModuleResize
 
 
-
 main :: IO ()
 main = do
     progName <- getProgName                         -- getProgName :: IO String
