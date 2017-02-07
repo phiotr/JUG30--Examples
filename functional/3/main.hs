@@ -14,7 +14,7 @@ main = do
         height  = read $ progArgs !! 1 :: Int
         rule    = read $ progArgs !! 2 :: Int
       in
-        putStr . toString $ generateCellularAutomata width height rule
+        putStr . toString $ generateCellularAutomata (width-1) height rule
 
 
 type Rule = Int

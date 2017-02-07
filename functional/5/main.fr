@@ -18,7 +18,7 @@ main = do
         rule    = atoi $ progArgs !! 2
         zoom    = atoi $ progArgs !! 3
 
-        ca_width = width `div` zoom
+        ca_width = (width-1) `div` zoom
         ca_height = height `div` zoom
 
         output  = "fractals/fr-" ++ show rule ++ "-" ++ show zoom ++ "-" ++ show width ++ "x" ++ show height ++ ".png"

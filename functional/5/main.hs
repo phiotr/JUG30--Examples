@@ -18,7 +18,7 @@ main = do
         rule    = read $ progArgs !! 2 :: Int
         zoom    = read $ progArgs !! 3 :: Int
 
-        ca_width = width `div` zoom
+        ca_width = (width-1) `div` zoom
         ca_height = height `div` zoom
 
         output  = "fractals/hs-" ++ show rule ++ "-" ++ show zoom ++ "-" ++ show width ++ "x" ++ show height ++ ".png"

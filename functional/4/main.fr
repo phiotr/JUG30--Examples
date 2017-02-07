@@ -14,4 +14,4 @@ main = do
         height  = atoi $ progArgs !! 1
         rule    = atoi $ progArgs !! 2
       in
-        putStr . toString $ generateCellularAutomata width height rule
+        putStr . toString $ generateCellularAutomata (width-1) height rule
