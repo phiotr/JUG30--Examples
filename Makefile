@@ -11,8 +11,8 @@ FRC8 = java -Xss1m -jar lib/fregec8.jar
 
 all: all8 all7 app5-hs app8-hs native
 
-all7: dirs app0-7 app1-7 app2-7 app3-7 app4-7 app6-7
-all8: dirs app0 app1 app2 app3 app4 app6
+all7: dirs app0-7 app1-7 app2-7 app3-7 app4-7 app6-7 app7-7
+all8: dirs app0 app1 app2 app3 app4 app6 app7
 
 
 
