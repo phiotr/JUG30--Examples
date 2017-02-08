@@ -7,3 +7,5 @@ List of Eamples:
 4 - Modules
 5 - Binary data & Images
 6 - So maybe ASCII Art...?
+7 - Let's deal with anomalies!
+8 - Benchmark
