@@ -1,4 +1,4 @@
-module ModuleAutomata (generateCellularAutomata, toString, toPrettyString, getHashCode) where
+module ModuleAutomata where
 
 import Data.Bits (shiftR)
 
@@ -9,36 +9,36 @@ type CellularAutomataRow = [Cell]
 type CellularAutomata = [CellularAutomataRow]
 
 
-initialRow :: Int -> Cell -> CellularAutomataRow
-initialRow width initial_cell = half_of_line ++ initial_cell : half_of_line
+private initialRow :: Int -> Cell -> CellularAutomataRow
+private initialRow width initial_cell = half_of_line ++ (initial_cell : half_of_line)
     where
         half_of_width = width `div` 2                   -- <=> div width 2
         half_of_line = take half_of_width $ repeat 0    -- take :: Int -> [a] -> [a]
                                                         -- repeat :: a -> [a]
 
 
-nextRow :: Rule -> CellularAutomataRow -> CellularAutomataRow
-nextRow rule line = 0 : converted_cells ++ [0]
+private nextRow :: Rule -> CellularAutomataRow -> CellularAutomataRow
+private nextRow rule line = 0 : converted_cells ++ [0]
     where
         converted_cells = map (transformTrio2Cell rule) (getTriplesFromRow line)
 
 
-getTriplesFromRow :: CellularAutomataRow -> [CellularTrio]
-getTriplesFromRow [] = []
-getTriplesFromRow [c1, c2, c3] = [(c1, c2, c3)]
-getTriplesFromRow (c1:c2:c3:rest) = (c1, c2, c3) : getTriplesFromRow (c2:c3:rest)
-getTriplesFromRow _ = []
+private getTriplesFromRow :: CellularAutomataRow -> [CellularTrio]
+private getTriplesFromRow [] = []
+private getTriplesFromRow [c1, c2, c3] = [(c1, c2, c3)]
+private getTriplesFromRow (c1:c2:c3:rest) = (c1, c2, c3) : getTriplesFromRow (c2:c3:rest)
+private getTriplesFromRow _ = []
 
 
-transformTrio2Cell :: Rule -> CellularTrio -> Cell
-transformTrio2Cell rule (c1, c2, c3) = (rule `shiftR` decimal_value) `mod` 2
+private transformTrio2Cell :: Rule -> CellularTrio -> Cell
+private transformTrio2Cell rule (c1, c2, c3) = (rule `shiftR` decimal_value) `mod` 2
     where
         decimal_value = 4*c1 + 2*c2 + c3
 
 
-generateRows :: Int -> Rule -> CellularAutomataRow -> CellularAutomata
-generateRows 0 _ _ = []
-generateRows h r prev = prev : generateRows (h-1) r next
+private generateRows :: Int -> Rule -> CellularAutomataRow -> CellularAutomata
+private generateRows 0 _ _ = []
+private generateRows h r prev = prev : generateRows (h-1) r next
     where
         next = nextRow r prev
 
@@ -54,7 +54,7 @@ toString = unlines . map show
 toPrettyString :: CellularAutomata -> String
 toPrettyString = unlines . map asciiArt
     where
-        asciiArt row = map (\cell -> if cell == 0 then '□' else '■') row
+        asciiArt row = packed $ map (\cell -> if cell == 0 then '□' else '■') row
 
 
 getHashCode :: CellularAutomata -> Int

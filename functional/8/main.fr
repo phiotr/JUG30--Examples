@@ -11,14 +11,14 @@ main = do
     if (length progArgs) < 4 then
         putStrLn ("Usage: " ++  progName ++ " <width> <height> <rule> <zoom>")
     else let
-        width   = read $ progArgs !! 0 :: Int
-        height  = read $ progArgs !! 1 :: Int
-        rule    = read $ progArgs !! 2 :: Int
-        zoom    = read $ progArgs !! 3 :: Int
+        width   = atoi $ progArgs !! 0
+        height  = atoi $ progArgs !! 1
+        rule    = atoi $ progArgs !! 2
+        zoom    = atoi $ progArgs !! 3
 
         ca_width = (width-1) `div` zoom
         ca_height = height `div` zoom
         margin = ca_height - 1
       in
-         print . getHashCode . resizeXY zoom . trimMargins margin $ generateCellularAutomata (ca_width + 2 * margin) ca_height rule
+         println . getHashCode . resizeXY zoom . trimMargins margin $ generateCellularAutomata (ca_width + 2 * margin) ca_height rule
 
