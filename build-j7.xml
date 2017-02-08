@@ -31,4 +31,7 @@
 	<target name="app7">
 		<jar destfile="${dst.dir}/app7-7.jar" basedir="${src.dir}/7/" includes="**/*.class" manifest="${manifest}"/>
 	</target>
+	<target name="app8">
+		<jar destfile="${dst.dir}/app8-7.jar" basedir="${src.dir}/8/" includes="**/*.class" manifest="${manifest}"/>
+	</target>
 </project>
