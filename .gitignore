@@ -1,6 +1,7 @@
 .idea/
 bin/
-oop/
+oop/j7/
+oop/j8/
 lib/
 fractals/
 *.o
