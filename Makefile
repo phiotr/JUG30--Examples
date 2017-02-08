@@ -73,8 +73,15 @@ app%-7:
 	make app$*-jar7
 
 native:
-	@echo -e "\n=================== Native Java ===================\n"
+	@echo "\n=================== Native Java ===================\n"
 	ant native
+
+extras:
+	@echo "\n--------------------   Extras   --------------------"
+	cd $(F_SOURCES)/extras/ && \
+	$(GHC) main-io.hs ModuleAutomata.hs ModuleResize.hs  -o ../../$(BINARIES)/app-io && \
+	$(GHC) main-png.hs ModuleAutomata.hs ModuleResize.hs ModuleColorConverter.hs ModulePng.hs -o ../../$(BINARIES)/app-png
+
 
 clean:
 	find $(F_SOURCES)/ $(J_SOURCES)/ \
