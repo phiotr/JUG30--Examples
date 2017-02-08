@@ -13,7 +13,7 @@ class CellularAutomata {
     // <-- generating CA
 
     private ArrayList<int[]> generateCellularAutomata(int width, int height, int rule) {
-        ArrayList<int[]> cellular_automata = new ArrayList();
+        ArrayList<int[]> cellular_automata = new ArrayList<int[]>();
 
         int[] row = initialRow(width);
 
@@ -95,7 +95,7 @@ class CellularAutomata {
         int start_position = margin;
         int end_position = this.automata.get(0).length - margin;
 
-        ArrayList<int[]> trimmed = new <int[]>ArrayList();
+        ArrayList<int[]> trimmed = new ArrayList<int[]>();
 
         this.automata.stream().map(
                 (row) -> Arrays.copyOfRange(row, start_position, end_position)
