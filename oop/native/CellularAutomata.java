@@ -92,8 +92,8 @@ class CellularAutomata {
     // <-- trimming margins
 
     public void trimMargins(int margin) {
-        int start_position = margin;
-        int end_position = this.automata.get(0).length - margin;
+        int start_position = margin + 1;
+        int end_position = this.automata.get(0).length - margin - 1;
 
         ArrayList<int[]> trimmed = new ArrayList<int[]>();
 
