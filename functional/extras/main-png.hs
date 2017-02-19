@@ -1,7 +1,6 @@
 import System.Environment (getArgs, getProgName)
 import ModuleAutomata
 import ModuleResize
-import ModuleColorConverter
 import ModulePng
 
 

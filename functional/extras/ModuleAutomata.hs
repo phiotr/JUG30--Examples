@@ -1,4 +1,4 @@
-module ModuleAutomata (generateCellularAutomata, toString, toPrettyString, saveToFile) where
+module ModuleAutomata (generateCellularAutomata, toString, toPrettyString, convertToMono, saveToFile) where
 
 import Data.Bits (shiftR)
 import System.IO
@@ -25,7 +25,6 @@ nextRow rule line = 0 : converted_cells ++ [0]
 
 
 getTriplesFromRow :: CellularAutomataRow -> [CellularTrio]
-getTriplesFromRow [] = []
 getTriplesFromRow [c1, c2, c3] = [(c1, c2, c3)]
 getTriplesFromRow (c1:c2:c3:rest) = (c1, c2, c3) : getTriplesFromRow (c2:c3:rest)
 getTriplesFromRow _ = []
@@ -58,6 +57,10 @@ toString = unlines . map show
 
 toPrettyString :: CellularAutomata -> String
 toPrettyString = unlines . map asciiArt
+
+
+convertToMono :: CellularAutomata -> [[Bool]]
+convertToMono = map (map (\cell -> cell == 1))
 
 
 saveToFile :: String -> CellularAutomata -> IO ()
