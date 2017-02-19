@@ -1,18 +1,11 @@
 import System.Environment (getProgName)
 
 
-main :: String -> IO ()
-main args = do
-    progName <- getProgName                         -- getProgName :: IO String
-
-    if (length progArgs) < 3 then
-        putStrLn ("Usage: " ++  progName ++ " <width> <height> <rule>")
-    else let
-        width   = atoi $ progArgs !! 0
-        height  = atoi $ progArgs !! 1
-        rule    = atoi $ progArgs !! 2
-      in
-        printArguments width height rule
+main :: [String] -> IO ()
+main (w:h:r:_) = printArguments (atoi w) (atoi h) (atoi r)
+main _ = do
+    progName <- getProgName
+    putStrLn $ "Usage: " ++  progName ++ " <width> <height> <rule>"
 
 
 printArguments :: Int -> Int -> Int -> IO ()
