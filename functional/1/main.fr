@@ -9,7 +9,7 @@ main = do
     if (length progArgs) < 3 then
         putStrLn ("Usage: " ++  progName ++ " <width> <height> <rule>")
     else let
-        width   = atoi $ progArgs !! 0
+        width   = atoi $ progArgs !! 0              -- atoi :: String -> Int
         height  = atoi $ progArgs !! 1
         rule    = atoi $ progArgs !! 2
       in
