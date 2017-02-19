@@ -1,6 +1,5 @@
 import System.Environment (getArgs, getProgName)
 import ModuleAutomata
-import ModuleColorConverter
 import ModulePng
 import ModuleResize
 
@@ -23,4 +22,4 @@ main = do
 
         output  = "fractals/hs-" ++ show rule ++ "-" ++ show zoom ++ "-" ++ show width ++ "x" ++ show height ++ ".png"
       in
-        saveMonoPng output . convert01ToMono . resizeXY zoom $ generateCellularAutomata ca_width ca_height rule
+        saveMonoPng output . convertToMono . resizeXY zoom $ generateCellularAutomata ca_width ca_height rule

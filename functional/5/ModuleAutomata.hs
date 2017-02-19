@@ -1,4 +1,4 @@
-module ModuleAutomata (generateCellularAutomata, toString) where
+module ModuleAutomata (generateCellularAutomata, toString, convertToMono) where
 
 import Data.Bits (shiftR)
 
@@ -49,3 +49,7 @@ generateCellularAutomata width height rule = generateRows height rule $ initialR
 
 toString :: CellularAutomata -> String
 toString = unlines . map show
+
+
+convertToMono :: CellularAutomata -> [[Bool]]
+convertToMono = map (map (\cell -> cell == 1))
