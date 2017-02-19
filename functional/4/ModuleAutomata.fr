@@ -24,7 +24,6 @@ private nextRow rule line = 0 : converted_cells ++ [0]
 
 
 private getTriplesFromRow :: CellularAutomataRow -> [CellularTrio]
-private getTriplesFromRow [] = []
 private getTriplesFromRow [c1, c2, c3] = [(c1, c2, c3)]
 private getTriplesFromRow (c1:c2:c3:rest) = (c1, c2, c3) : getTriplesFromRow (c2:c3:rest)
 private getTriplesFromRow _ = []

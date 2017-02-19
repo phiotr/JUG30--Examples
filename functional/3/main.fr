@@ -41,7 +41,6 @@ nextRow rule line = 0 : converted_cells ++ [0]
 
 
 getTriplesFromRow :: CellularAutomataRow -> [CellularTrio]
-getTriplesFromRow [] = []
 getTriplesFromRow [c1, c2, c3] = [(c1, c2, c3)]
 getTriplesFromRow (c1:c2:c3:rest) = (c1, c2, c3) : getTriplesFromRow (c2:c3:rest)
 getTriplesFromRow _ = []
