@@ -39,14 +39,12 @@ app%-hs:
 
 app%-frege:
 	@echo "\n--------------------   Frege   --------------------"
-	$(FRC8) -d $(J_SOURCES)/j8/$*/ $(F_SOURCES)/$*/Module*.fr || true
-	$(FRC8) -d $(J_SOURCES)/j8/$*/ $(F_SOURCES)/$*/main.fr
+	$(FRC8) -make -d $(J_SOURCES)/j8/$*/ -sp $(F_SOURCES)/$*  main.fr
 
 
 app%-frege7:
 	@echo "\n--------------------   Frege   --------------------"
-	$(FRC7) -d $(J_SOURCES)/j7/$*/ $(F_SOURCES)/$*/Module*.fr || true
-	$(FRC7) -d $(J_SOURCES)/j7/$*/ $(F_SOURCES)/$*/main.fr
+	$(FRC7) -make -d $(J_SOURCES)/j7/$*/ -sp $(F_SOURCES)/$*/ main.fr
 
 
 app%-jar:
@@ -68,7 +66,6 @@ app%:
 
 app%-7:
 	@echo "\n==================== Example $* ====================\n"
-	make app$*-hs
 	make app$*-frege7
 	make app$*-jar7
 
